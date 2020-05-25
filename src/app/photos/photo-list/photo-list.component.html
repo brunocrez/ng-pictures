@@ -1,1 +1,5 @@
-<app-photos [photos]="photos"></app-photos>
+<app-search (queryDescription)="filter = $event" [emptyValue]="filter"></app-search>
+
+<app-photos [photos]="photos | filterByDescription: filter"></app-photos>
+
+<app-load-button (click)="loadMore()" [hasMore]="hasMore"></app-load-button>
