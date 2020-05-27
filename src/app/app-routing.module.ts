@@ -5,12 +5,19 @@ import { PhotoListComponent } from './photos/photo-list/photo-list.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
 import { LoginComponent } from './home/login/login.component';
+import { AuthGuard } from './core/auth/auth.guard';
+import { RegisterComponent } from './home/register/register.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   },
   {
     path: 'user/:userName',

@@ -1,16 +1,23 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
-import { CommonModule } from '@angular/common';
 import { MessageModule } from '../shared/components/message/message.module';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
-    declarations: [LoginComponent],
+    declarations: [
+        LoginComponent,
+        RegisterComponent
+    ],
     imports: [
         ReactiveFormsModule,
         CommonModule,
-        MessageModule
+        MessageModule,
+        RouterModule,
+        FormsModule
     ]
 })
 export class HomeModule { }

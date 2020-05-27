@@ -1,0 +1,35 @@
+<h4 class="text-center text-muted">Register On Pictures!</h4>
+
+<form [formGroup]="registerForm" class="form mt-4">
+    <div class="form-group">
+        <input formControlName="email" type="text" class="form-control" placeholder="email" autofocus>
+        <app-message message="Email is Required!" *ngIf="registerForm.get('email').errors?.required"></app-message>
+        <app-message message="Email is Invalid!" *ngIf="registerForm.get('email').errors?.email"></app-message>
+    </div>
+
+    <div class="form-group">
+        <input formControlName="fullName" type="text" class="form-control" placeholder="full name">
+        <app-message message="Full Name is Required!" *ngIf="registerForm.get('fullName').errors?.required"></app-message>
+        <app-message message="Must have 2 characters at least!" *ngIf="registerForm.get('fullName').errors?.minlength"></app-message>
+        <app-message message="Must have 40 characters at maximum!" *ngIf="registerForm.get('fullName').errors?.maxlength"></app-message>
+    </div>
+
+    <div class="form-group">
+        <input formControlName="userName" type="text" class="form-control" placeholder="user name">
+        <app-message message="User Name is Required!" *ngIf="registerForm.get('userName').errors?.required"></app-message>
+        <app-message message="Must be lowercase!" *ngIf="registerForm.get('userName').errors?.lowerCase"></app-message>
+        <app-message message="Must have 2 characters at least!" *ngIf="registerForm.get('userName').errors?.minlength"></app-message>
+        <app-message message="Must have 30 characters at maximum!" *ngIf="registerForm.get('userName').errors?.maxlength"></app-message>
+    </div>
+
+    <div class="form-group">
+        <input formControlName="password" type="password" class="form-control" placeholder="password">
+        <app-message message="Password is Required!" *ngIf="registerForm.get('password').errors?.required"></app-message>
+        <app-message message="Must have 8 characters at least!" *ngIf="registerForm.get('password').errors?.minlength"></app-message>
+        <app-message message="Must have 14 characters at maximum!" *ngIf="registerForm.get('password').errors?.maxlength"></app-message>
+    </div>
+
+    <button [disabled]="registerForm.invalid" class="btn btn-primary btn-block">Register</button>
+
+    <p>Already User?<a [routerLink]="['']">Login!</a></p>
+</form>
