@@ -18,7 +18,7 @@ export class TokenService {
     }
 
     removeToken() {
-
+        window.localStorage.clear();
     }
 
 }
