@@ -1,14 +1,16 @@
 <div class="animated fadeIn">
-    <form [formGroup]="loginForm" class="m-4" (submit)="login()">
-        <div class="form-group">
-            <input #inputUserName formControlName="username" type="text" class="form-control" autofocus>
-        </div>
-        <app-message message="Username is Required!" *ngIf="loginForm.get('username').errors?.required"></app-message>
-        <div class="form-group">
-            <input formControlName="password" type="password" class="form-control">
-        </div>
-        <app-message message="Password is Required!" *ngIf="loginForm.get('password').errors?.required"></app-message>
-        <button class="btn btn-primary btn-block">Login</button>
-    </form>
-    <p>Not User? <a [routerLink]="['/register']">Register Now!</a></p>
+    <div class="container">
+        <form [formGroup]="loginForm" (submit)="login()">
+            <div class="form-group">
+                <input #inputUserName formControlName="username" type="text" class="form-control" autofocus>
+            </div>
+            <app-message message="Username is Required!" *ngIf="loginForm.get('username').errors?.required"></app-message>
+            <div class="form-group">
+                <input formControlName="password" type="password" class="form-control">
+            </div>
+            <app-message message="Password is Required!" *ngIf="loginForm.get('password').errors?.required"></app-message>
+            <button class="btn btn-primary btn-block">Login</button>
+        </form>
+        <p>Not User? <a [routerLink]="['register']">Register Now!</a></p>
+    </div>
 </div>

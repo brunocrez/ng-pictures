@@ -9,7 +9,8 @@ import { RegisterService } from './register.service';
 import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
 
 @Component({
-    templateUrl: './register.component.html'
+    templateUrl: './register.component.html',
+    providers: [UserNotTakenValidatorService]
 })
 export class RegisterComponent implements OnInit {
 

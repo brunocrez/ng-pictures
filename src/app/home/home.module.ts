@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { MessageModule } from '../shared/components/message/message.module';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home.component';
+import { HomeRoutingModule } from './home-routing.module';
+import { RegisterService } from './register/register.service';
 
 @NgModule({
     declarations: [
@@ -21,7 +23,11 @@ import { HomeComponent } from './home.component';
         MessageModule,
         HttpClientModule,
         RouterModule,
-        FormsModule
+        FormsModule,
+        HomeRoutingModule
+    ],
+    providers: [
+        RegisterService
     ]
 })
 export class HomeModule { }

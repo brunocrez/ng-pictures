@@ -4,28 +4,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { PhotoListComponent } from './photos/photo-list/photo-list.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
-import { LoginComponent } from './home/login/login.component';
-import { AuthGuard } from './core/auth/auth.guard';
-import { RegisterComponent } from './home/register/register.component';
-import { HomeComponent } from './home/home.component';
-
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        component: LoginComponent,
-
-      },
-      {
-        path: 'register',
-        component: RegisterComponent
-      }
-    ]
+    pathMatch: 'full',
+    redirectTo: 'home'
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'user/:userName',
