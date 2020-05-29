@@ -10,4 +10,5 @@
         <app-message message="Password is Required!" *ngIf="loginForm.get('password').errors?.required"></app-message>
         <button class="btn btn-primary btn-block">Login</button>
     </form>
+    <p>Not User? <a [routerLink]="['/register']">Register Now!</a></p>
 </div>
