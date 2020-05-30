@@ -1,14 +1,38 @@
 <div class="container">
     <form [formGroup]="photoForm" class="row" (submit)="submit()">
         <div class="col-md-6 text-center">
-            <input formControlName="file" type="file" accept="image/*" (change)="file = $event.target.files[0]">
-            <app-message message="Please, Select a Photo!" *ngIf="photoForm.get('file').errors?.required"></app-message>
+            <div class="form-group" *ngIf="!preview; else previewImage">
+                <button immediateClick class="btn btn-primary" (click)="fileInput.click()">
+                    <i class="fa fa-image fa-4x align-middle"></i>
+                </button>
+                <input 
+                    #fileInput 
+                    hidden 
+                    formControlName="file" 
+                    type="file" 
+                    accept="image/*" 
+                    (change)="handleFile($event.target.files[0])">
+                <app-message 
+                    class="d-block"
+                    message="Please, Select a Photo!" 
+                    *ngIf="photoForm.get('file').errors?.required">
+                </app-message>                
+            </div>
+            <ng-template #previewImage>
+                <app-photo [url]="preview" title="Preview"></app-photo>
+            </ng-template>
         </div>
 
         <div class="col-md-6">
             <div class="form-group">
-                <textarea formControlName="description" class="form-control form-control-sm"></textarea>
-                <app-message message="Maximum 300 characters!" *ngIf="photoForm.get('description').errors?.maxlength"></app-message>
+                <textarea 
+                    formControlName="description" 
+                    class="form-control form-control-sm">
+                </textarea>
+                <app-message 
+                    message="Maximum 300 characters!" 
+                    *ngIf="photoForm.get('description').errors?.maxlength">
+                </app-message>
             </div>
 
             <div class="form-group">
