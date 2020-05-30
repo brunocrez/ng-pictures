@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PhotoListComponent } from './photos/photo-list/photo-list.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
+import { PhotoFormComponent } from './photos/photo-form/photo-form.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
     resolve: {
       content: PhotoListResolver
     }
+  },
+  {
+    path: 'photo/add',
+    component: PhotoFormComponent
   },
   {
     path: '**',
