@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Photo } from './photo';
+import { PhotoComment } from './photo-comment';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,15 @@ export class PhotoService {
     return this.http.post(`${this.API}/photos/upload`, formData);
   }
 
-  findPhotoById(id: string) {
-    return this.http.get<Photo>(`${this.API}/photos/${id}`)
+  findPhotoById(photoId: number) {
+    return this.http.get<Photo>(`${this.API}/photos/${photoId}`);
+  }
+
+  getComments(photoId: number) {
+    return this.http.get<PhotoComment[]>(`${this.API}/photos/${photoId}/comments`);
+  }
+
+  addComment(photoId: number, commentText: string) {
+    return this.http.post<PhotoComment[]>(`${this.API}/photos/${photoId}/comments`, { commentText });
   }
 }
