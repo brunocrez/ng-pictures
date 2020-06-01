@@ -7,11 +7,13 @@ import { PhotoDetailsComponent } from './photo-details.component';
 import { PhotoModule } from '../photo/photo.module';
 import { PhotoCommentsComponent } from './photo-comments/photo-comments.component';
 import { MessageModule } from '../../shared/components/message/message.module';
+import { PhotoOwnerDirective } from './photo-owner/photo-owner.directive';
 
 @NgModule({
     declarations: [
         PhotoDetailsComponent,
-        PhotoCommentsComponent
+        PhotoCommentsComponent,
+        PhotoOwnerDirective
     ],
     imports: [
         CommonModule,
