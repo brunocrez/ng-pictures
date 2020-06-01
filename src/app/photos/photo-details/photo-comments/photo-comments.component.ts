@@ -1,13 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { switchMap, tap } from 'rxjs/operators';
 
 import { PhotoComment } from '../../photo/photo-comment';
 import { PhotoService } from '../../photo/photo.service';
 
 @Component({
     selector: 'app-photo-comments',
-    templateUrl: './photo-comments.component.html'
+    templateUrl: './photo-comments.component.html',
+    styleUrls: ['./photo-comments.component.css']
 })
 export class PhotoCommentsComponent implements OnInit {
 
@@ -33,11 +35,12 @@ export class PhotoCommentsComponent implements OnInit {
 
     submitForm() {
         const comment = this.commentForm.get('comment').value as string;
-        this.photoService.addComment(this.photoId, comment)
-            .subscribe(() => {
+        this.comments$ = this.photoService
+            .addComment(this.photoId, comment)
+            .pipe(switchMap(() => this.photoService.getComments(this.photoId)))
+            .pipe(tap(() => {
                 this.commentForm.reset();
-                alert('Sucesso!');
-            })
+            }))
     }
 
 }
