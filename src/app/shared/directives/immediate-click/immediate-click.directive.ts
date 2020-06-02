@@ -1,4 +1,5 @@
 import { OnInit, Directive, ElementRef } from '@angular/core';
+
 import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
 
 @Directive({

@@ -8,6 +8,7 @@
             <small>
                 <p class="text-left break-work">{{ photo.description }}</p>
                 <div class="text-left mb-4">
+                    <i (click)="likePhoto(photo)" showIfLogged class="fa fa-heart-o fa-2x float-left mr-2"></i><span showIfLogged>{{ photo.likes }}</span>
                     <i class="fa fa-comment-o fa-2x mr-2 ml-2"></i>{{ photo.comments }}
                     <i photoOwner [ownedPhoto]="photo" (click)="deletePhoto()" class="fa fa-trash-o fa-2x float-right"></i>
                 </div>

@@ -8,6 +8,7 @@ import { PhotoModule } from '../photo/photo.module';
 import { PhotoCommentsComponent } from './photo-comments/photo-comments.component';
 import { MessageModule } from '../../shared/components/message/message.module';
 import { PhotoOwnerDirective } from './photo-owner/photo-owner.directive';
+import { ShowIfLoggedModule } from '../../shared/directives/show-if-logged/show-if-logged.module';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { PhotoOwnerDirective } from './photo-owner/photo-owner.directive';
         PhotoModule,
         RouterModule,
         ReactiveFormsModule,
-        MessageModule
+        MessageModule,
+        ShowIfLoggedModule
     ],
     exports: [
         PhotoDetailsComponent,
