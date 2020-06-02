@@ -1,8 +1,10 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NewUser } from './new-user';
 
-const API = 'http://localhost:3000'
+import { NewUser } from './new-user';
+import { environment } from '../../../environments/environment';
+
+const API = environment.apiURL;
 
 @Injectable()
 export class RegisterService {

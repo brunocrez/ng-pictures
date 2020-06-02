@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 
-const CLOUD = 'http://localhost:3000/imgs';
+import { environment } from '../../../environments/environment';
+
+const API = `${environment.apiURL}/imgs`;
 
 @Component({
   selector: 'app-photo',
@@ -14,7 +16,7 @@ export class PhotoComponent {
   @Input() description = '';
   @Input() set url(url: string) {
     if (!url.startsWith('data')) {
-      this._url = `${CLOUD}/${url}`;
+      this._url = `${API}/${url}`;
     } else {
       this._url = url;
     }
