@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="photoForm" class="row" (submit)="submit()">
+    <form [formGroup]="photoForm" class="row">
         <div class="col-md-6 text-center">
             <div class="form-group" *ngIf="!preview; else previewImage">
                 <button immediateClick class="btn btn-primary" (click)="fileInput.click()">
@@ -42,10 +42,21 @@
                 </label>
             </div>
 
-            <button [disabled]="photoForm.invalid" class="btn btn-primary btn-block">Upload</button>
+            <div *ngIf="!percentProgress; else progress">
+                <button 
+                    [disabled]="photoForm.invalid" 
+                    class="btn btn-primary btn-block"
+                    (click)="submit()">
+                    Upload
+                </button>
+                <a [routerLink]="['']" class="btn btn-secondary btn-block">Cancel</a>
+            </div>
 
-            <a class="btn btn-secondary btn-block">Cancel</a>
-
+            <ng-template #progress>
+                <div class="text-center display-5">
+                    Upload Progress: {{percentProgress}}%
+                </div>
+            </ng-template>
         </div>
     </form>
 </div>

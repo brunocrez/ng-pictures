@@ -21,22 +21,24 @@ const routes: Routes = [
   {
     path: 'user/:userName',
     component: PhotoListComponent,
-    resolve: {
-      content: PhotoListResolver
-    }
+    resolve: { content: PhotoListResolver },
+    data: { title: 'TimeLine Page' }
   },
   {
     path: 'photo/add',
     component: PhotoFormComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { title: 'Photo Upload Page' }
   },
   {
     path: 'photo/:photoId',
-    component: PhotoDetailsComponent
+    component: PhotoDetailsComponent,
+    data: { title: 'Photo Detail Page' }
   },
   {
     path: 'not-found',
-    component: NotFoundComponent
+    component: NotFoundComponent,
+    data: { title: 'Not Found Page' }
   },
   {
     path: '**',

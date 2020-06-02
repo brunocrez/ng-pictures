@@ -15,11 +15,13 @@ const routes: Routes = [
             {
                 path: '',
                 component: LoginComponent,
+                data: { title: 'Login Page' }
 
             },
             {
                 path: 'register',
-                component: RegisterComponent
+                component: RegisterComponent,
+                data: { title: 'Register Page' }
             }
         ]
     }
