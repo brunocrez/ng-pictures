@@ -1,6 +1,21 @@
 <header class="fixed-top">
     <nav class="navbar navbar-light bg-white">
-        <a class="navbar-brand">Pictures</a>
+        <a class="navbar-brand">
+            <i 
+                tabindex="0"
+                (click)="menu.toggleMenu()" 
+                class="fa fa-bars mr-2"
+                (keyup.space)="menu.toggleMenu()">
+            </i>
+            Pictures
+        </a>
+
+        <app-menu #menu>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+            </ul>
+        </app-menu>
 
         <div *ngIf="(user$ | async) as user; else login">
             <i class="fa fa-user-circle"></i>

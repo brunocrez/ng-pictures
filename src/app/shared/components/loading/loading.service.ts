@@ -12,7 +12,7 @@ export class LoadingService {
     getLoading() {
         return this.loadingSubject
             .asObservable()
-            .pipe(startWith(LoadingType.LOADING));
+            .pipe(startWith(LoadingType.STOPPED));
     }
 
     start() {
