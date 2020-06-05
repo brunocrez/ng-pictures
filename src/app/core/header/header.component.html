@@ -11,8 +11,10 @@
         </a>
 
         <app-menu #menu>
-            <ul>
-                <li>Item 1</li>
+            <ul class="list-unstyled">
+                <li>
+                    <a showIfLogged [routerLink]="['photo', 'add']">Upload Photo</a>                    
+                </li>
                 <li>Item 2</li>
             </ul>
         </app-menu>
