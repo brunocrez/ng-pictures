@@ -6,7 +6,7 @@ import { lowerCaseValidator } from '../../shared/validators/lower-case.validator
 import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
 import { NewUser } from './new-user';
 import { RegisterService } from './register.service';
-import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
+import { UserNamePasswordMatcher } from './match.validator';
 
 @Component({
     templateUrl: './register.component.html',
@@ -21,13 +21,11 @@ export class RegisterComponent implements OnInit {
         private formBuilder: FormBuilder,
         private userNotTakenValidatorService: UserNotTakenValidatorService,
         private registerService: RegisterService,
-        private router: Router,
-        private platformDetectorService: PlatformDetectorService
+        private router: Router
     ) { }
 
     ngOnInit() {
         this.initializeForm();
-        //this.platformDetectorService.isPlatformBrowser() && this.inputEmail.nativeElement.focus();
     }
 
     initializeForm() {
@@ -36,15 +34,19 @@ export class RegisterComponent implements OnInit {
             fullName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(40)]],
             userName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30), lowerCaseValidator], this.userNotTakenValidatorService.checkIfTaken()],
             password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(14)]]
-        })
+        }, { validators: UserNamePasswordMatcher })
     }
 
     register() {
-        const newUser = this.registerForm.getRawValue() as NewUser;
-        this.registerService.register(newUser)
-            .subscribe(
-                () => this.router.navigate(['']),
-                err => console.error(err)
-            )
+        if (this.registerForm.invalid || this.registerForm.pending) {
+            return;
+        } else {
+            const newUser = this.registerForm.getRawValue() as NewUser;
+            this.registerService.register(newUser)
+                .subscribe(
+                    () => this.router.navigate(['']),
+                    err => console.error(err)
+                )
+        }
     }
 }

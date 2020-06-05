@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.initializeForm();
-        //this.platformDetectorService.isPlatformBrowser() && this.inputUserName.nativeElement.focus();
     }
 
     initializeForm() {
