@@ -10,6 +10,7 @@ import { UserNamePasswordMatcher } from './match.validator';
 
 @Component({
     templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css'],
     providers: [UserNotTakenValidatorService]
 })
 export class RegisterComponent implements OnInit {

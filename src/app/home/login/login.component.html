@@ -2,15 +2,28 @@
     <div class="container">
         <form [formGroup]="loginForm" (submit)="login()">
             <div class="form-group">
-                <input #inputUserName formControlName="username" type="text" class="form-control" autofocus>
+                <input #inputUserName formControlName="username" class="form-control" autofocus>
+                <div class="text-center">
+                    <app-message                     
+                        message="Username is Required!" 
+                        *ngIf="loginForm.get('username').errors?.required">
+                    </app-message>
+                </div>
             </div>
-            <app-message message="Username is Required!" *ngIf="loginForm.get('username').errors?.required"></app-message>
+
             <div class="form-group">
                 <input formControlName="password" type="password" class="form-control">
+                <div class="text-center">
+                    <app-message 
+                        message="Password is Required!" 
+                        *ngIf="loginForm.get('password').errors?.required">
+                    </app-message>
+                </div>            
             </div>
-            <app-message message="Password is Required!" *ngIf="loginForm.get('password').errors?.required"></app-message>
-            <button class="btn btn-primary btn-block">Login</button>
+
+            <button class="button" [disabled]="loginForm.invalid">Login</button>
         </form>
-        <p>Not User? <a [routerLink]="['register']">Register Now!</a></p>
+        <hr>
+        <p class="footer-text">Not User? <a [routerLink]="['register']">Register Now!</a></p>
     </div>
 </div>

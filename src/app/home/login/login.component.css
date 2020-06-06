@@ -1,0 +1,29 @@
+input {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.button {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    background-color: rgb(139, 105, 116);
+    border: none;
+    font-weight: 600;
+    color: azure;
+    transition: filter 200ms linear;
+    font-size: 13px;
+}
+
+.button:hover {
+    filter: brightness(85%);
+}
+
+.footer-text {
+    text-align: center;
+    margin: 0;
+    font-size: 14px;
+}
