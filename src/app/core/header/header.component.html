@@ -1,6 +1,6 @@
 <header class="fixed-top">
-    <nav class="navbar navbar-light bg-white">
-        <a class="navbar-brand">
+    <nav class="navbar navbar-light bg-primary text-white">
+        <a class="navbar-brand text-white">
             <i 
                 tabindex="0"
                 (click)="menu.toggleMenu()" 
@@ -21,13 +21,13 @@
 
         <div *ngIf="(user$ | async) as user; else login">
             <i class="fa fa-user-circle"></i>
-            <a class="ml-2">{{ user.name }}</a>
+            <a class="ml-2 mr-1">{{ user.name }}</a>
             <a (click)="logout()">(Logout)</a>
         </div>
 
         <ng-template #login>
             <span class="navbar-text">
-                <a [routerLink]="['']">Please, Login!</a>
+                <a class="text-white" [routerLink]="['']">Please, Login!</a>
             </span>
         </ng-template>
     </nav>
